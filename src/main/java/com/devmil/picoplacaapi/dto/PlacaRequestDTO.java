@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class PlacaRequestDTO {
-    private String placa; //Ingreso
-    private LocalDateTime fechaHora; //Ingreso
+    private String placa;
+    private LocalDateTime fechaHora;
 }

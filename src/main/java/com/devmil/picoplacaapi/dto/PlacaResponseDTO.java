@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 public class PlacaResponseDTO {
     private String placa;
-    private boolean circulacion; //verificar si es necesaria
+    private boolean circulacion;
     private String mensaje;
 }

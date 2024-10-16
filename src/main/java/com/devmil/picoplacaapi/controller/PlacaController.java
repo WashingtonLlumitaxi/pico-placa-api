@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin //Permite el intercambio de datos con otros origenes
+@CrossOrigin //Intercambio de datos con otros origenes
 @AllArgsConstructor
 @RequestMapping("/api/v1/placas")
 @RestController
