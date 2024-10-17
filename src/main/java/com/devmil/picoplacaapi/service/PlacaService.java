@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 
 @Service
 public class PlacaService {
@@ -19,20 +20,27 @@ public class PlacaService {
 
         //Validar formato
         if (!formatoPlaca(placa)) {
-            //return crearRespuesta(placa, false, "Formato de la placa invalido");
-            throw new PlacaException("El fórmato de la placa es inválido");
+            return crearRespuesta(placa, false, "Formato de la placa invalido");
+            //throw new PlacaException("El fórmato de la placa es inválido");
         }
 
-        //Validar fecha actual
-        if (fechaHora.isBefore(LocalDateTime.now())) {
-            //return crearRespuesta(placa, false, "La fecha y hora no pueden ser anteriores a la actual");
+        ZoneId zoneId = ZoneId.of("America/Guayaquil");
+        LocalDateTime fechaActual = LocalDateTime.now(zoneId);
+        if (fechaHora.isBefore(fechaActual)) {
             throw new PlacaException("La fecha y hora no pueden ser anteriores a la actual");
         }
+
+//        //Validar fecha actual
+//        if (fechaHora.isBefore(LocalDateTime.now())) {
+//            //return crearRespuesta(placa, false, "La fecha y hora no pueden ser anteriores a la actual");
+//            throw new PlacaException("La fecha y hora no pueden ser anteriores a la actual");
+//        }
 
 
         //Restricciones pico y placa
         boolean puedeCircular = validarRestriccionPP(placa, fechaHora);
         String mensaje = puedeCircular ? "Puede Circular" : "No puede circular";
+        //throw  new PlacaException(mensaje);
 
         return crearRespuesta(placa, puedeCircular, mensaje);
     }
