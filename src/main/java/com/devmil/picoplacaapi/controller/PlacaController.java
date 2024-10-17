@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/placas")
 @RestController
 public class PlacaController {
-    //Inyeccion de dependencias
+
     private final PlacaService placaService;
 
     @PostMapping("/validar")

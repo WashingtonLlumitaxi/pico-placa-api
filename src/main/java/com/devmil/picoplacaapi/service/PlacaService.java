@@ -1,6 +1,7 @@
 package com.devmil.picoplacaapi.service;
 
 import com.devmil.picoplacaapi.dto.PlacaResponseDTO;
+import com.devmil.picoplacaapi.exceptions.PlacaException;
 import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -12,17 +13,20 @@ public class PlacaService {
     public PlacaResponseDTO validarCirculacion(String placa, LocalDateTime fechaHora) {
         //Validar placa vacia
         if (placa == null || placa.isEmpty()) {
-            return crearRespuesta(placa, false, "La placa no puede ir vacia ");
+            //return crearRespuesta(placa, false, "La placa no puede ir vacia ");
+            throw new PlacaException("La placa no puede ir vacia");
         }
 
         //Validar formato
         if (!formatoPlaca(placa)) {
-            return crearRespuesta(placa, false, "Formato de la placa invalido");
+            //return crearRespuesta(placa, false, "Formato de la placa invalido");
+            throw new PlacaException("El fórmato de la placa es inválido");
         }
 
         //Validar fecha actual
         if (fechaHora.isBefore(LocalDateTime.now())) {
-            return crearRespuesta(placa, false, "La fecha y hora no pueden ser anteriores a la actual");
+            //return crearRespuesta(placa, false, "La fecha y hora no pueden ser anteriores a la actual");
+            throw new PlacaException("La fecha y hora no pueden ser anteriores a la actual");
         }
 
 
