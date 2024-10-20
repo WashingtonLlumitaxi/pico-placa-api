@@ -6,6 +6,7 @@ Esta aplicación determina si un vehículo puede circular en función de su núm
 
 
 - Link de la app desplegada: https://tourmaline-cupcake-6e4e29.netlify.app/
+  (Al ser un servicio gratuito tarde 60 segundos o más en dar la primera respuesta)
 - Link de la parte fronted: https://github.com/WashingtonLlumitaxi/pico-placa-web
 
   # Backed de la aplicación
